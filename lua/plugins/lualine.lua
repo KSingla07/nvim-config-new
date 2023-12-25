@@ -2,7 +2,7 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
-		"arkav/lualine-lsp-progress",
+		"linrongbin16/lsp-progress.nvim",
 	},
 	config = function()
 		require("configs.lualine")
