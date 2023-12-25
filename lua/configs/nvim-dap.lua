@@ -2,6 +2,7 @@ local M = {}
 M.nvim_dap_ui_setup = function(_, opts)
 	local dap = require("dap")
 	local dapui = require("dapui")
+	local widgets = require("dap.ui.widgets")
 	dapui.setup(opts)
 	dap.listeners.after.event_initialized["dapui_config"] = function()
 		dapui.open({})
@@ -12,6 +13,45 @@ M.nvim_dap_ui_setup = function(_, opts)
 	dap.listeners.before.event_exited["dapui_config"] = function()
 		dapui.close({})
 	end
+	vim.keymap.set("n", "<F5>", function()
+		dap.continue()
+	end)
+	vim.keymap.set("n", "<F10>", function()
+		dap.step_over()
+	end)
+	vim.keymap.set("n", "<F11>", function()
+		dap.step_into()
+	end)
+	vim.keymap.set("n", "<F12>", function()
+		dap.step_out()
+	end)
+	vim.keymap.set("n", "<Leader>b", function()
+		dap.toggle_breakpoint()
+	end)
+	vim.keymap.set("n", "<Leader>B", function()
+		dap.set_breakpoint()
+	end)
+	vim.keymap.set("n", "<Leader>lp", function()
+		dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+	end)
+	vim.keymap.set("n", "<Leader>dr", function()
+		dap.repl.open()
+	end)
+	vim.keymap.set("n", "<Leader>dl", function()
+		dap.run_last()
+	end)
+	vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
+		widgets.hover()
+	end)
+	vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
+		widgets.preview()
+	end)
+	vim.keymap.set("n", "<Leader>df", function()
+		widgets.centered_float(widgets.frames)
+	end)
+	vim.keymap.set("n", "<Leader>ds", function()
+		widgets.centered_float(widgets.scopes)
+	end)
 end
 M.nvim_dap_ui_keys = {
 	{
@@ -37,125 +77,7 @@ M.mason_nvim_dap_opts = {
 		"delve",
 	},
 }
-M.nvim_dap_keys = {
-	{
-		"<leader>dB",
-		function()
-			require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
-		end,
-		desc = "Breakpoint Condition",
-	},
-	{
-		"<leader>db",
-		function()
-			require("dap").toggle_breakpoint()
-		end,
-		desc = "Toggle Breakpoint",
-	},
-	{
-		"<leader>dc",
-		function()
-			require("dap").continue()
-		end,
-		desc = "Continue",
-	},
-	{
-		"<leader>da",
-		function()
-			require("dap").continue({ before = get_args })
-		end,
-		desc = "Run with Args",
-	},
-	{
-		"<leader>dC",
-		function()
-			require("dap").run_to_cursor()
-		end,
-		desc = "Run to Cursor",
-	},
-	{
-		"<leader>dg",
-		function()
-			require("dap").goto_()
-		end,
-		desc = "Go to line (no execute)",
-	},
-	{
-		"<leader>di",
-		function()
-			require("dap").step_into()
-		end,
-		desc = "Step Into",
-	},
-	{
-		"<leader>dj",
-		function()
-			require("dap").down()
-		end,
-		desc = "Down",
-	},
-	{
-		"<leader>dk",
-		function()
-			require("dap").up()
-		end,
-		desc = "Up",
-	},
-	{
-		"<leader>dl",
-		function()
-			require("dap").run_last()
-		end,
-		desc = "Run Last",
-	},
-	{
-		"<leader>do",
-		function()
-			require("dap").step_out()
-		end,
-		desc = "Step Out",
-	},
-	{
-		"<leader>dO",
-		function()
-			require("dap").step_over()
-		end,
-		desc = "Step Over",
-	},
-	{
-		"<leader>dp",
-		function()
-			require("dap").pause()
-		end,
-		desc = "Pause",
-	},
-	{
-		"<leader>dr",
-		function()
-			require("dap").repl.toggle()
-		end,
-		desc = "Toggle REPL",
-	},
-	{
-		"<leader>ds",
-		function()
-			require("dap").session()
-		end,
-		desc = "Session",
-	},
-	{
-		"<leader>dt",
-		function()
-			require("dap").terminate()
-		end,
-		desc = "Terminate",
-	},
-	{
-		"<leader>dw",
-		function()
-			require("dap.ui.widgets").hover()
-		end,
-		desc = "Widgets",
-	},
-}
+M.nvim_dap_setup = function()
+	local keymap = vim.keymap
+end
 return M
