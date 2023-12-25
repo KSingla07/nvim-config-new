@@ -16,6 +16,12 @@ return {
 			"jay-babu/mason-nvim-dap.nvim",
 		},
 		ft = { "go", "gomod", "gotmpl", "gosum" },
+		config = function()
+			require("dap-go").setup({})
+			vim.keymap.set("n", "<leader>dt", function()
+				require("dap-go").debug_test()
+			end)
+		end,
 	},
 	{
 		"rcarriga/nvim-dap-ui",
