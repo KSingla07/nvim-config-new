@@ -8,7 +8,7 @@ return {
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			build = ":TSUpdate",
-			ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+			ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "go", "gomod", "gosum", "gowork" },
 			auto_install = false,
 			highlight = {
 				enable = true,
