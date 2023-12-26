@@ -39,7 +39,6 @@ M.mason_null_ls_setup = function()
 			"gofumpt",
 			"goimports-reviser",
 			"golines",
-			"delve",
 			"gomodifytags",
 			"gotests",
 			"impl",

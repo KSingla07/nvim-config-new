@@ -77,7 +77,4 @@ M.mason_nvim_dap_opts = {
 		"delve",
 	},
 }
-M.nvim_dap_setup = function()
-	local keymap = vim.keymap
-end
 return M
