@@ -35,6 +35,8 @@ return {
 				"make",
 				"kotlin",
 				"python",
+				"dockerfile",
+				"cpp",
 			},
 			auto_install = false,
 			highlight = {
