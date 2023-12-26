@@ -7,6 +7,8 @@ require("mason-lspconfig").setup({
 		"bashls",
 		"yamlls",
 		"jsonls",
+		"clangd",
+		"tsserver",
 	},
 })
 
@@ -72,3 +74,5 @@ lspconfig.dockerls.setup({})
 lspconfig.bashls.setup({})
 lspconfig.nginx_language_server.setup({})
 lspconfig.jsonls.setup({})
+lspconfig.clangd.setup({})
+lspconfig.tsserver.setup({})

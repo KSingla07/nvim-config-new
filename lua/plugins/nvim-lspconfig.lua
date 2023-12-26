@@ -10,6 +10,7 @@ return {
 		},
 		{ "j-hui/fidget.nvim", opts = {} },
 		{ "folke/neodev.nvim", opts = {} },
+		"windwp/nvim-autopairs",
 	},
 	config = function()
 		require("configs.lspconfig")
