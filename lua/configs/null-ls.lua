@@ -59,7 +59,6 @@ M.mason_null_ls_setup = function()
 
 			-- Nginx LSP
 			"nginx-language-server",
-			"nginx_beautifier",
 		},
 		automatic_installation = false,
 	})
