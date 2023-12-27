@@ -50,21 +50,10 @@ lspconfig.gopls.setup({
 	settings = {
 		gopls = {
 			completeUnimported = true,
-			usePlaceholders = true,
 			analyses = {
 				unusedparams = true,
 			},
-			hints = {
-				assignVariableTypes = true,
-				compositeLiteralFields = true,
-				compositeLiteralTypes = true,
-				constantValues = true,
-				functionTypeParameters = true,
-				parameterNames = true,
-				rangeVariableTypes = true,
-			},
-			staticcheck = true,
-			semanticTokens = true,
+			usePlaceholders = true,
 		},
 	},
 })
