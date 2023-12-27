@@ -13,6 +13,7 @@ M.null_ls_setup = function()
 			null_ls.builtins.formatting.sql_formatter,
 			null_ls.builtins.formatting.sqlfmt,
 			null_ls.builtins.formatting.stylua,
+			null_ls.builtins.formatting.nginx_beautifier,
 		},
 		on_attach = function(client, bufnr)
 			if client.supports_method("textDocument/formatting") then
@@ -58,6 +59,7 @@ M.mason_null_ls_setup = function()
 
 			-- Nginx LSP
 			"nginx-language-server",
+			"nginx_beautifier",
 		},
 		automatic_installation = false,
 	})
