@@ -22,4 +22,4 @@ require("bufferline").setup({
 })
 keymap("n", "<Tab>", ":bn<CR>", default_opts)
 keymap("n", "<S-Tab>", ":bp<CR>", default_opts)
-keymap("n", "<C-x>", ":bd<CR>", default_opts)
+keymap("n", "<C-x>", ":Bdelete<CR>", default_opts)
