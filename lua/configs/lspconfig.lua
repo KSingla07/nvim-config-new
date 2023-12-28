@@ -9,6 +9,7 @@ require("mason-lspconfig").setup({
 		"jsonls",
 		"clangd",
 		"tsserver",
+		"docker_compose_language_service",
 	},
 })
 
@@ -18,18 +19,19 @@ local lsp_attach = function(client, bufnr)
 	-- Create your keybindings here...
 end
 
--- Call setup on each LSP server
-require("mason-lspconfig").setup_handlers({
-	function(server_name)
-		lspconfig[server_name].setup({
-			on_attach = lsp_attach,
-			capabilities = lsp_capabilities,
-		})
-	end,
-})
+-- require("mason-lspconfig").setup_handlers({
+-- 	function(server_name)
+-- 		lspconfig[server_name].setup({
+-- 			on_attach = lsp_attach,
+-- 			capabilities = lsp_capabilities,
+-- 		})
+-- 	end,
+-- })
 
 -- Lua LSP settings
 lspconfig.lua_ls.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -44,6 +46,8 @@ lspconfig.lua_ls.setup({
 local util = require("lspconfig/util")
 -- Gopls LSP settings
 lspconfig.gopls.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
 	cmd = { "gopls" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
 	root_dir = util.root_pattern("go.work", "go.mod", ".git"),
@@ -58,10 +62,35 @@ lspconfig.gopls.setup({
 	},
 })
 
-lspconfig.yamlls.setup({})
-lspconfig.dockerls.setup({})
-lspconfig.bashls.setup({})
-lspconfig.nginx_language_server.setup({})
-lspconfig.jsonls.setup({})
-lspconfig.clangd.setup({})
-lspconfig.tsserver.setup({})
+lspconfig.yamlls.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
+})
+lspconfig.dockerls.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
+})
+lspconfig.bashls.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
+})
+lspconfig.nginx_language_server.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
+})
+lspconfig.jsonls.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
+})
+lspconfig.clangd.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
+})
+lspconfig.tsserver.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
+})
+lspconfig.docker_compose_language_service.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
+})
