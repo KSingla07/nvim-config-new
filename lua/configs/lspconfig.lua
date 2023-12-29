@@ -13,22 +13,24 @@ require("mason-lspconfig").setup({
 	},
 })
 
+function docker_fix()
+	local filename = vim.fn.expand("%:t")
+
+	if (filename == "docker-compose.yaml") or (filename == "docker-compose.yml") then
+		vim.bo.filetype = "yaml.docker-compose"
+		print("matched!")
+	else
+		print(filename)
+	end
+end
+
+vim.cmd([[au BufRead * lua docker_fix()]])
+
 local lspconfig = require("lspconfig")
 local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lsp_attach = function(client, bufnr)
 	-- Create your keybindings here...
 end
-
--- require("mason-lspconfig").setup_handlers({
--- 	function(server_name)
--- 		lspconfig[server_name].setup({
--- 			on_attach = lsp_attach,
--- 			capabilities = lsp_capabilities,
--- 		})
--- 	end,
--- })
-
--- Lua LSP settings
 lspconfig.lua_ls.setup({
 	on_attach = lsp_attach,
 	capabilities = lsp_capabilities,
