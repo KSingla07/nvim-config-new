@@ -9,22 +9,8 @@ require("mason-lspconfig").setup({
 		"jsonls",
 		"clangd",
 		"tsserver",
-		"docker_compose_language_service",
 	},
 })
-
-function docker_fix()
-	local filename = vim.fn.expand("%:t")
-
-	if (filename == "docker-compose.yaml") or (filename == "docker-compose.yml") then
-		vim.bo.filetype = "yaml.docker-compose"
-		print("matched!")
-	else
-		print(filename)
-	end
-end
-
-vim.cmd([[au BufRead * lua docker_fix()]])
 
 local lspconfig = require("lspconfig")
 local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -67,6 +53,20 @@ lspconfig.gopls.setup({
 lspconfig.yamlls.setup({
 	on_attach = lsp_attach,
 	capabilities = lsp_capabilities,
+	settings = {
+		yaml = {
+			schemaStore = {
+				enable = false,
+				url = "",
+			},
+			schemas = require("schemastore").yaml.schemas(),
+		},
+		redhat = {
+			telemetry = {
+				enabled = false,
+			},
+		},
+	},
 })
 lspconfig.dockerls.setup({
 	on_attach = lsp_attach,
@@ -83,16 +83,18 @@ lspconfig.nginx_language_server.setup({
 lspconfig.jsonls.setup({
 	on_attach = lsp_attach,
 	capabilities = lsp_capabilities,
+	settings = {
+		json = {
+			schemas = require("schemastore").json.schemas(),
+			validate = { enable = true },
+		},
+	},
 })
 lspconfig.clangd.setup({
 	on_attach = lsp_attach,
 	capabilities = lsp_capabilities,
 })
 lspconfig.tsserver.setup({
-	on_attach = lsp_attach,
-	capabilities = lsp_capabilities,
-})
-lspconfig.docker_compose_language_service.setup({
 	on_attach = lsp_attach,
 	capabilities = lsp_capabilities,
 })

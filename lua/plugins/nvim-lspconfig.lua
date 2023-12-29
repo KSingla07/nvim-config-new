@@ -24,6 +24,7 @@ return {
 				require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
 			end,
 		},
+		{ "b0o/schemastore.nvim" },
 	},
 	config = function()
 		require("configs.lspconfig")
