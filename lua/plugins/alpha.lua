@@ -35,7 +35,6 @@ return {
 			hl = "Type",
 			-- wrap = "overflow";
 		}
-		dashboard.opts.opts.noautocmd = true
 		alpha.setup(dashboard.opts)
 	end,
 }
