@@ -10,8 +10,19 @@ M.null_ls_setup = function()
 			null_ls.builtins.formatting.golines,
 			null_ls.builtins.formatting.eslint,
 			null_ls.builtins.formatting.prettier,
+
 			null_ls.builtins.formatting.sql_formatter,
-			null_ls.builtins.formatting.sqlfmt,
+			null_ls.builtins.formatting.pg_format.with({
+				extra_args = {
+					"--keyword-case",
+					"2",
+					"--function-case",
+					"1",
+					"--type-case",
+					"2",
+					"--no-space-function",
+				},
+			}),
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.nginx_beautifier,
 		},
@@ -51,7 +62,6 @@ M.mason_null_ls_setup = function()
 			"prettier",
 
 			-- SQL
-			"sqlfmt",
 			"sql-formatter",
 
 			-- Lua

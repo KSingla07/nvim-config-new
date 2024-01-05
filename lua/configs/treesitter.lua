@@ -1,3 +1,5 @@
+vim.treesitter.language.register("sql", "pgsql")
+vim.cmd("au BufRead,BufNewFile *.pgsql set filetype=pgsql")
 require("nvim-treesitter.configs").setup({
 	build = ":TSUpdate",
 	ensure_installed = {
