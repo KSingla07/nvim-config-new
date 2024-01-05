@@ -3,7 +3,20 @@ return {
 	lazy = false,
 	version = "*",
 	dependencies = {
-		"nvim-tree/nvim-web-devicons", -- Fancy icon support
+		"nvim-tree/nvim-web-devicons",
+		config = function()
+			local devicons = require("nvim-web-devicons")
+			devicons.setup({
+				override = {
+					pgsql = {
+						icon = "",
+						color = "#008bb9",
+						cterm_color = "65",
+						name = "postgres",
+					},
+				},
+			})
+		end,
 	},
 	opts = {
 		actions = {
