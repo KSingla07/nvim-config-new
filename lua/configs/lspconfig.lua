@@ -98,3 +98,10 @@ lspconfig.tsserver.setup({
 	on_attach = lsp_attach,
 	capabilities = lsp_capabilities,
 })
+lspconfig.postgres_lsp.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
+	filetypes = { "pgsql" },
+	root_dir = util.root_pattern("*.pgsql"),
+	single_file_support = true,
+})
