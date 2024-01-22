@@ -31,6 +31,8 @@ require("nvim-treesitter.configs").setup({
 		"python",
 		"dockerfile",
 		"cpp",
+		"toml",
+		"rust",
 	},
 	auto_install = false,
 	highlight = {

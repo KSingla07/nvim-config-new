@@ -9,6 +9,7 @@ require("mason-lspconfig").setup({
 		"jsonls",
 		"clangd",
 		"tsserver",
+		"rust_analyzer",
 	},
 })
 
@@ -104,4 +105,8 @@ lspconfig.postgres_lsp.setup({
 	filetypes = { "pgsql" },
 	root_dir = util.root_pattern("*.pgsql"),
 	single_file_support = true,
+})
+lspconfig.rust_analyzer.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
 })
