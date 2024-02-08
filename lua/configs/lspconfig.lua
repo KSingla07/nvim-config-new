@@ -10,6 +10,9 @@ require("mason-lspconfig").setup({
 		"clangd",
 		"tsserver",
 		"rust_analyzer",
+		"tailwindcss",
+		"eslint",
+		"cucumber_language_server",
 	},
 })
 
@@ -52,7 +55,10 @@ lspconfig.gopls.setup({
 })
 
 lspconfig.yamlls.setup({
-	on_attach = lsp_attach,
+	on_attach = function(client, bufnr)
+		client.server_capabilities.signatureHelpProvider = false
+		lsp_attach(client, bufnr)
+	end,
 	capabilities = lsp_capabilities,
 	settings = {
 		yaml = {
@@ -103,10 +109,21 @@ lspconfig.postgres_lsp.setup({
 	on_attach = lsp_attach,
 	capabilities = lsp_capabilities,
 	filetypes = { "pgsql" },
-	root_dir = util.root_pattern("*.pgsql"),
 	single_file_support = true,
 })
 lspconfig.rust_analyzer.setup({
 	on_attach = lsp_attach,
 	capabilities = lsp_capabilities,
+})
+lspconfig.tailwindcss.setup({
+	on_attach = lsp_attach,
+	capabilitie = lsp_capabilities,
+})
+lspconfig.eslint.setup({
+	on_attach = lsp_attach,
+	capabilitie = lsp_capabilities,
+})
+lspconfig.cucumber_language_server.setup({
+	on_attach = lsp_attach,
+	capabilitie = lsp_capabilities,
 })

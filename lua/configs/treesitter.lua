@@ -33,6 +33,7 @@ require("nvim-treesitter.configs").setup({
 		"cpp",
 		"toml",
 		"rust",
+		"groovy",
 	},
 	auto_install = false,
 	highlight = {
