@@ -16,6 +16,14 @@ return {
 		"folke/neodev.nvim",
 		"saadparwaiz1/cmp_luasnip",
 		"onsails/lspkind.nvim",
+		{
+			"roobert/tailwindcss-colorizer-cmp.nvim",
+			config = function()
+				require("tailwindcss-colorizer-cmp").setup({
+					color_square_width = 2,
+				})
+			end,
+		},
 	},
 	config = function()
 		require("configs.nvim-cmp")

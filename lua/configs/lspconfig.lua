@@ -11,7 +11,8 @@ require("mason-lspconfig").setup({
 		"tsserver",
 		"rust_analyzer",
 		"tailwindcss",
-		"eslint",
+		"cssls",
+		"html",
 		"cucumber_language_server",
 	},
 })
@@ -79,6 +80,14 @@ lspconfig.dockerls.setup({
 	on_attach = lsp_attach,
 	capabilities = lsp_capabilities,
 })
+lspconfig.html.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
+})
+lspconfig.cssls.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
+})
 lspconfig.bashls.setup({
 	on_attach = lsp_attach,
 	capabilities = lsp_capabilities,
@@ -97,10 +106,13 @@ lspconfig.jsonls.setup({
 		},
 	},
 })
-lspconfig.clangd.setup({
-	on_attach = lsp_attach,
-	capabilities = lsp_capabilities,
-})
+-- lspconfig.clangd.setup({
+-- 	on_attach = function(client, bufnr)
+-- 		client.server_capabilities.signatureHelpProvider = false
+-- 		lsp_attach(client, bufnr)
+-- 	end,
+-- 	capabilities = lsp_capabilities,
+-- })
 lspconfig.tsserver.setup({
 	on_attach = lsp_attach,
 	capabilities = lsp_capabilities,
@@ -111,16 +123,11 @@ lspconfig.postgres_lsp.setup({
 	filetypes = { "pgsql" },
 	single_file_support = true,
 })
-lspconfig.rust_analyzer.setup({
-	on_attach = lsp_attach,
-	capabilities = lsp_capabilities,
-})
 lspconfig.tailwindcss.setup({
-	on_attach = lsp_attach,
-	capabilitie = lsp_capabilities,
-})
-lspconfig.eslint.setup({
-	on_attach = lsp_attach,
+	on_attach = function(client, bufnr)
+		require("tailwindcss-colors").buf_attach(bufnr)
+		lsp_attach(client, bufnr)
+	end,
 	capabilitie = lsp_capabilities,
 })
 lspconfig.cucumber_language_server.setup({

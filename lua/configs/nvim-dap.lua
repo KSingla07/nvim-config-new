@@ -75,6 +75,7 @@ M.mason_nvim_dap_opts = {
 	handlers = {},
 	ensure_installed = {
 		"delve",
+		"codelldb",
 	},
 }
 return M

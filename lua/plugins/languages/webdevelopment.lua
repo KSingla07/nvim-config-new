@@ -1,11 +1,15 @@
 return {
 	{
-		"roobert/tailwindcss-colorizer-cmp.nvim",
-		-- optionally, override the default options:
+		"NvChad/nvim-colorizer.lua",
 		config = function()
-			require("tailwindcss-colorizer-cmp").setup({
-				color_square_width = 2,
-			})
+			require("colorizer").setup()
+		end,
+	},
+	{
+		"themaxmarchuk/tailwindcss-colors.nvim",
+		module = "tailwindcss-colors",
+		config = function()
+			require("tailwindcss-colors").setup()
 		end,
 	},
 }

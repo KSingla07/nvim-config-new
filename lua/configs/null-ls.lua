@@ -8,10 +8,11 @@ M.null_ls_setup = function()
 			null_ls.builtins.formatting.gofumpt,
 			null_ls.builtins.formatting.goimports_reviser,
 			null_ls.builtins.formatting.golines,
-			null_ls.builtins.formatting.eslint,
+			null_ls.builtins.code_actions.eslint_d,
 			null_ls.builtins.formatting.prettierd,
-
+			null_ls.builtins.formatting.rustywind,
 			null_ls.builtins.formatting.sql_formatter,
+			null_ls.builtins.diagnostics.markuplint,
 			null_ls.builtins.formatting.pg_format.with({
 				extra_args = {
 					"--keyword-case",
@@ -25,6 +26,7 @@ M.null_ls_setup = function()
 			}),
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.nginx_beautifier,
+			null_ls.builtins.formatting.rustfmt,
 		},
 		on_attach = function(client, bufnr)
 			if client.supports_method("textDocument/formatting") then
@@ -60,6 +62,9 @@ M.mason_null_ls_setup = function()
 			-- Typescript
 			"eslint-lsp",
 			"prettierd",
+			"eslint_d",
+			"rustywind",
+			"markuplint",
 
 			-- SQL
 			"sql-formatter",
@@ -69,6 +74,8 @@ M.mason_null_ls_setup = function()
 
 			-- Nginx LSP
 			"nginx-language-server",
+			-- Rust
+			"rustfmt",
 		},
 		automatic_installation = false,
 	})
