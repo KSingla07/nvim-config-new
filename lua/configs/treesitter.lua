@@ -1,5 +1,8 @@
 vim.treesitter.language.register("sql", "pgsql")
+vim.treesitter.language.register("groovy", "Jenkinsfile")
 vim.cmd("au BufRead,BufNewFile *.pgsql set filetype=pgsql")
+vim.cmd("au BufRead,BufNewFile *Jenkinsfile set filetype=Jenkinsfile")
+vim.cmd("au BufRead,BufNewFile *jenkinsfile set filetype=Jenkinsfile")
 require("nvim-treesitter.configs").setup({
 	build = ":TSUpdate",
 	ensure_installed = {

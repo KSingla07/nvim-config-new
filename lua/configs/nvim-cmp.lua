@@ -50,15 +50,16 @@ cmp.setup({
 		{ name = "path" },
 	}),
 	formatting = {
-		format = lspkind.cmp_format({
-			mode = "symbol_text",
-			menu = {
-				nvim_lua = "[Lua]",
-				nvim_lsp = "[LSP]",
-				luasnip = "[LuaSnip]",
-				buffer = "[Buffer]",
-				path = "[Path]",
-			},
-		}),
+		-- format = lspkind.cmp_format({
+		-- 	mode = "symbol_text",
+		-- 	menu = {
+		-- 		nvim_lua = "[Lua]",
+		-- 		nvim_lsp = "[LSP]",
+		-- 		luasnip = "[LuaSnip]",
+		-- 		buffer = "[Buffer]",
+		-- 		path = "[Path]",
+		-- 	},
+		-- }),
+		format = require("tailwindcss-colorizer-cmp").formatter,
 	},
 })

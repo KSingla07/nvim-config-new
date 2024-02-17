@@ -14,6 +14,7 @@ require("mason-lspconfig").setup({
 		"cssls",
 		"html",
 		"cucumber_language_server",
+		"groovyls",
 	},
 })
 
@@ -79,6 +80,11 @@ lspconfig.yamlls.setup({
 lspconfig.dockerls.setup({
 	on_attach = lsp_attach,
 	capabilities = lsp_capabilities,
+})
+lspconfig.groovyls.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
+	filetypes = { "groovy", "Jenkinsfile" },
 })
 lspconfig.html.setup({
 	on_attach = lsp_attach,

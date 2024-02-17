@@ -27,6 +27,8 @@ M.null_ls_setup = function()
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.nginx_beautifier,
 			null_ls.builtins.formatting.rustfmt,
+			null_ls.builtins.formatting.npm_groovy_lint,
+			null_ls.builtins.diagnostics.npm_groovy_lint,
 		},
 		on_attach = function(client, bufnr)
 			if client.supports_method("textDocument/formatting") then

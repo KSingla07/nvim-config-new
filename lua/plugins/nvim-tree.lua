@@ -14,6 +14,12 @@ return {
 						cterm_color = "65",
 						name = "postgres",
 					},
+					Jenkinsfile = {
+						icon = "",
+						color = "#008bb9",
+						cterm_color = "65",
+						name = "jenkinsfile",
+					},
 				},
 			})
 		end,
