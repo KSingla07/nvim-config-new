@@ -11,24 +11,20 @@ M.null_ls_setup = function()
 			null_ls.builtins.code_actions.eslint_d,
 			null_ls.builtins.formatting.prettierd,
 			null_ls.builtins.formatting.rustywind,
-			null_ls.builtins.formatting.sql_formatter,
 			null_ls.builtins.diagnostics.markuplint,
-			null_ls.builtins.formatting.pg_format.with({
-				extra_args = {
-					"--keyword-case",
-					"2",
-					"--function-case",
-					"2",
-					"--type-case",
-					"3",
-					"--no-space-function",
-				},
-			}),
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.nginx_beautifier,
 			null_ls.builtins.formatting.rustfmt,
 			null_ls.builtins.formatting.npm_groovy_lint,
 			null_ls.builtins.diagnostics.npm_groovy_lint,
+			null_ls.builtins.formatting.sqlfluff.with({
+				extra_args = { "--dialect", "postgres" },
+				filetypes = { "pgsql" },
+			}),
+			null_ls.builtins.diagnostics.sqlfluff.with({
+				extra_args = { "--dialect", "postgres" },
+				filetypes = { "pgsql" },
+			}),
 		},
 		on_attach = function(client, bufnr)
 			if client.supports_method("textDocument/formatting") then
@@ -70,6 +66,7 @@ M.mason_null_ls_setup = function()
 
 			-- SQL
 			"sql-formatter",
+			"sqlfluff",
 
 			-- Lua
 			"stylua",

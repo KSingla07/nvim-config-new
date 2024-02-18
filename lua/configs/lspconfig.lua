@@ -15,6 +15,7 @@ require("mason-lspconfig").setup({
 		"html",
 		"cucumber_language_server",
 		"groovyls",
+		"sqlls",
 	},
 })
 
@@ -123,12 +124,6 @@ lspconfig.tsserver.setup({
 	on_attach = lsp_attach,
 	capabilities = lsp_capabilities,
 })
-lspconfig.postgres_lsp.setup({
-	on_attach = lsp_attach,
-	capabilities = lsp_capabilities,
-	filetypes = { "pgsql" },
-	single_file_support = true,
-})
 lspconfig.tailwindcss.setup({
 	on_attach = function(client, bufnr)
 		require("tailwindcss-colors").buf_attach(bufnr)
@@ -139,4 +134,8 @@ lspconfig.tailwindcss.setup({
 lspconfig.cucumber_language_server.setup({
 	on_attach = lsp_attach,
 	capabilitie = lsp_capabilities,
+})
+lspconfig.sqlls.setup({
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
 })
