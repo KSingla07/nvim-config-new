@@ -15,7 +15,7 @@ require("mason-lspconfig").setup({
 		"html",
 		"cucumber_language_server",
 		"groovyls",
-		"sqlls",
+		"cssmodules_ls",
 	},
 })
 
@@ -129,13 +129,13 @@ lspconfig.tailwindcss.setup({
 		require("tailwindcss-colors").buf_attach(bufnr)
 		lsp_attach(client, bufnr)
 	end,
-	capabilitie = lsp_capabilities,
+	capabilities = lsp_capabilities,
 })
 lspconfig.cucumber_language_server.setup({
 	on_attach = lsp_attach,
-	capabilitie = lsp_capabilities,
+	capabilities = lsp_capabilities,
 })
-lspconfig.sqlls.setup({
+lspconfig.cssmodules_ls.setup({
 	on_attach = lsp_attach,
 	capabilities = lsp_capabilities,
 })

@@ -17,13 +17,13 @@ M.null_ls_setup = function()
 			null_ls.builtins.formatting.rustfmt,
 			null_ls.builtins.formatting.npm_groovy_lint,
 			null_ls.builtins.diagnostics.npm_groovy_lint,
-			null_ls.builtins.formatting.sqlfluff.with({
-				extra_args = { "--dialect", "postgres" },
-				filetypes = { "pgsql" },
-			}),
 			null_ls.builtins.diagnostics.sqlfluff.with({
 				extra_args = { "--dialect", "postgres" },
 				filetypes = { "pgsql" },
+			}),
+			null_ls.builtins.formatting.sql_formatter.with({
+				filetypes = { "sql", "pgsql" },
+				extra_args = { "-c", M.get_sql_formatter_config_json_string() },
 			}),
 		},
 		on_attach = function(client, bufnr)
@@ -78,5 +78,8 @@ M.mason_null_ls_setup = function()
 		},
 		automatic_installation = false,
 	})
+end
+M.get_sql_formatter_config_json_string = function()
+	return '{"language": "postgresql","dialect": "postgresql","tabWidth": 4,"keywordCase": "upper","dataTypeCase": "upper","functionCase": "lower","identifierCase": "lower","logicalOperatorNewline": "before"}'
 end
 return M

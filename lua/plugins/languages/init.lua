@@ -4,4 +4,5 @@ return {
 	require("plugins.languages.webdevelopment"),
 	require("plugins.languages.jenkins"),
 	require("plugins.languages.markdown"),
+	require("plugins.languages.sql"),
 }
